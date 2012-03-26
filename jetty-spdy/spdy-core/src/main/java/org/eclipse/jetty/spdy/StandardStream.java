@@ -142,10 +142,6 @@ public class StandardStream implements IStream
     @Override
     public void updateCloseState(boolean close)
     {
-        for (IStream stream : session.getAssociatedStreams(this))
-        {
-            stream.updateCloseState(close);
-        }
         if (close)
         {
             if (isHalfClosed())

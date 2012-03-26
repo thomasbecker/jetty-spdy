@@ -460,14 +460,14 @@ public class StandardSession implements ISession, Parser.Listener, Handler<Stand
 
         if (synStream.isUnidirectional())
         {
-            // TODO: check if synchronization is needed
+            // TODO: use this.associatedStreams 
             Set<IStream> childStreams = parentStream.getAssociatedStreams();
             if (childStreams.isEmpty())
             {
                 childStreams = new HashSet<>();
+                associatedStreams.putIfAbsent(parentStream,childStreams);
             }
             childStreams.add(stream);
-            associatedStreams.put(parentStream,childStreams);
         }
         
         
